@@ -65,3 +65,17 @@ http://localhost:8080/users/?page=1
   "page": 1,
   "itemPerPage": 10
 }
+
+* Postman
+Create a new user
++ POST /users
+{
+    "name": "somkiat",
+    "age": 30
+}
+Response
+{
+    "id": 1234,
+    "name": "somkiat",
+    "age": 30
+}
