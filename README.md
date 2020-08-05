@@ -67,8 +67,7 @@ http://localhost:8080/users/?page=1
 }
 
 * Postman
-Create a new user
-+ POST /users
+Create a new user + POST /users
 {
     "name": "somkiat",
     "age": 30
