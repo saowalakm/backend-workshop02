@@ -79,3 +79,24 @@ Response
     "name": "somkiat",
     "age": 30
 }
+
+* Create table & repository
+// http://localhost:8080/users
+{
+  "page": 1,
+  "item_per_page": 10,
+  "users": [
+    {
+      "id": 1,
+      "name": "User 1"
+    },
+    {
+      "id": 2,
+      "name": "User 2"
+    },
+    {
+      "id": 3,
+      "name": "User 3"
+    }
+  ]
+}
