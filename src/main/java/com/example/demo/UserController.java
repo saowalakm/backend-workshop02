@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -30,16 +31,20 @@ public class UserController {
 
         PagingResponse pagingResponse = new PagingResponse(page, itemPerPage);
         List<UsersResponse> usersResponseList = new ArrayList<>();
-        usersResponseList.add(new UsersResponse(1, "User 1"));
-        usersResponseList.add(new UsersResponse(2, "User 2"));
-        usersResponseList.add(new UsersResponse(3, "User 3"));
+
+        Iterable<User> users = userRepository.findAll();
+        for (User user: users) {
+            usersResponseList.add(new UsersResponse(user.getId(), user.getName()));
+        }
+
         pagingResponse.setUsersResponse(usersResponseList);
         return pagingResponse;
     }
 
     @GetMapping("/users/{id}")
     public UsersResponse getUserById(@PathVariable int id) {
-        return new UsersResponse(id, "User " + id);
+        Optional<User> user = userRepository.findById(id);
+        return new UsersResponse(user.get().getId(), user.get().getName());
     }
 
     @PostMapping("/users1")
